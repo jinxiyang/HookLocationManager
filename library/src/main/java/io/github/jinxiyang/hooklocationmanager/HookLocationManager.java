@@ -55,7 +55,7 @@ public class HookLocationManager {
      * APP端发起定位，最终会执行mService.requestLocationUpdates()方法
      * @param locationManager
      */
-    public static void hookLocationManager(Object locationManager){
+    protected static void hookLocationManager(Object locationManager){
         try {
             //class是：android.location.LocationManager;
             Class<?> clazz = locationManager.getClass();
@@ -88,7 +88,7 @@ public class HookLocationManager {
      * hook LocationListener，监控每一次的定位结果。
      * @param listenerTransport
      */
-    public static void hookLocationListener(Object listenerTransport) {
+    protected static void hookLocationListener(Object listenerTransport) {
         try {
             Class<?> listenerTransportClass = Class.forName("android.location.LocationManager$ListenerTransport");
             Field mListenerField = listenerTransportClass.getDeclaredField("mListener");

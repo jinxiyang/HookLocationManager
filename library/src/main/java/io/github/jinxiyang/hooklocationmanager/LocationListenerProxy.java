@@ -23,7 +23,6 @@ public class LocationListenerProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        Log.d(TAG, "invoke: "  + method.getName());
         if ("onLocationChanged".equals(method.getName()) && args != null && args.length == 1 && args[0] instanceof Location) {
             //每次定位结果的回调，可以搞事情，记录定位时间、回调类是谁等等。
             Location location = (Location) args[0];
